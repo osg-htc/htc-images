@@ -22,6 +22,14 @@ jobs:
       - id: image-list
         run: |
           ORG_DIR=htc
+
+          # List all image root dirs. Example value:
+          # "osg-htc/rocky:8 osg-htc/debian:12"
+          images_all=$(find $ORG_DIR -mindepth 1 \
+                                     -maxdepth 1 \
+                                     -type d \
+                                     -printf "$ORG_DIR/%P\n")
+
           # Get the list of files changed based on the type of event
           # kicking off the GHA:
           # 1. For the main branch, diff the previous state of main vs
@@ -30,41 +38,39 @@ jobs:
           #    vs the current commit
           # 3. For PRs, diff the base ref vs the current commit
           # 4. For everything else (e.g., dispatches), build all images
-          if [[ $GITHUB_EVENT_NAME == 'pull_request' ]] ||
-             [[ $GITHUB_EVENT_NAME == 'push' ]]; then
-               if [[ $GITHUB_EVENT_NAME == 'pull_request' ]]; then
-                   BASE=$(git merge-base origin/$GITHUB_BASE_REF HEAD)
-               elif [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-                   BASE=${{github.event.before}}
-               else
-                   BASE=origin/main
-               fi
-               # List image root dirs where files have changed and the
-               # root dir exists. Example value:
-               # "opensciencegrid/vo-frontend opensciencegrid/ospool-cm"
-               images=$(git diff --name-only \
-                                 "$BASE" \
-                                 "$GITHUB_SHA" |
-                        egrep "^$ORG_DIR/" |
-                        cut -d/ -f -2 |
-                        sort |
-                        uniq |
-                        xargs -I {} find . -type d \
-                                           -wholename ./{} \
-                                           -printf "%P\n")
-          else
-               # List all image root dirs. Example value:
-               # "opensciencegrid/vo-frontend opensciencegrid/ospool-cm"
-               images=$(find $ORG_DIR -mindepth 1 \
-                                      -maxdepth 1 \
-                                      -type d \
-                                      -printf "$ORG_DIR/%P\n")
+          # Disable this section if running under "act"
+          if [[ $ACT != 'true' ]]; then
+              if [[ $GITHUB_EVENT_NAME == 'pull_request' ]] ||
+                 [[ $GITHUB_EVENT_NAME == 'push' ]]; then
+                   if [[ $GITHUB_EVENT_NAME == 'pull_request' ]]; then
+                       BASE=$(git merge-base origin/$GITHUB_BASE_REF HEAD)
+                   elif [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+                       BASE=${{github.event.before}}
+                   else
+                       BASE=origin/main
+                   fi
+                   # List image root dirs where files have changed and the
+                   # root dir exists. Example value:
+                   # "osg-htc/rocky:8 osg-htc/debian:12"
+                   images=$(git diff --name-only \
+                                     "$BASE" \
+                                     "$GITHUB_SHA" |
+                            egrep "^$ORG_DIR/" |
+                            cut -d/ -f -2 |
+                            sort |
+                            uniq |
+                            xargs -I {} find . -type d \
+                                               -wholename ./{} \
+                                               -printf "%P\n")
+              fi
           fi
 
-          # Ensure that the generated JSON array has a member,
-          # otherwise GHA will throw an error about an empty matrix
-          # vector in subsequent steps
-          image_json=$(echo -n "${images:-dummy}" | jq -Rcs '.|split("\n")')
+          # pass back the changed list, or all if no specific changes where found
+          if [ "x$images" = "x" ]; then
+              images="$images_all"
+          fi
+          image_json=$(echo -n "${images}" | jq -Rcs '.|split("\n")')
+          echo "json=$image_json"
           echo "json=$image_json" >> $GITHUB_OUTPUT
 
   build:
