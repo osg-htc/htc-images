@@ -74,7 +74,7 @@ jobs:
           echo "json=$image_json"
           echo "json=$image_json" >> $GITHUB_OUTPUT
 
-  build_and_push:
+  build_push:
     runs-on: ubuntu-latest
     needs: build-image-list
     # Prevent a single build failure from killing the workflow.
