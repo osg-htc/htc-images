@@ -30,8 +30,8 @@ jobs:
           #    vs the current commit
           # 3. For PRs, diff the base ref vs the current commit
           # 4. For everything else (e.g., dispatches), build all images
-          if [[ $FOO_GITHUB_EVENT_NAME == 'pull_request' ]] ||
-             [[ $FOO_GITHUB_EVENT_NAME == 'push' ]]; then
+          if [[ $GITHUB_EVENT_NAME == 'pull_request' ]] ||
+             [[ $GITHUB_EVENT_NAME == 'push' ]]; then
                if [[ $GITHUB_EVENT_NAME == 'pull_request' ]]; then
                    BASE=$(git merge-base origin/$GITHUB_BASE_REF HEAD)
                elif [[ $GITHUB_REF == 'refs/heads/main' ]]; then
@@ -65,7 +65,7 @@ jobs:
           # otherwise GHA will throw an error about an empty matrix
           # vector in subsequent steps
           image_json=$(echo -n "${images:-dummy}" | jq -Rcs '.|split("\n")')
-          echo "::set-output name=json::$image_json"
+          echo "json=$image_json" >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest
