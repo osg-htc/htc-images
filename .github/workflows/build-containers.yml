@@ -89,7 +89,7 @@ jobs:
     if: >-
       github.ref == 'refs/heads/main' &&
       github.event_name != 'pull_request' &&
-      github.repository_owner == 'htc' &&
+      github.repository_owner == 'osg-htc' &&
       needs.build-image-list.outputs.images != '["dummy"]'
     needs: [build-image-list, build]
     strategy:
