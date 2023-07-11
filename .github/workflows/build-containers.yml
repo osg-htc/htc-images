@@ -101,6 +101,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: "{{defaultContext}}:${{ matrix.image }}"
-          tags: ${{ matrix.image }}
+          tags: hub.opensciencegrid.org/${{ matrix.image }}
           push: true
 
