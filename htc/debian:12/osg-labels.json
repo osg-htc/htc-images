@@ -1,0 +1,7 @@
+{
+    "opensciencegrid.name": "Debian 12",
+    "opensciencegrid.description": "Debian 12 base image",
+    "opensciencegrid.url": "https://debian.org/",
+    "opensciencegrid.category": "Base",
+    "opensciencegrid.definition_url": "https://github.com/osg-htc/htc-images"
+}
