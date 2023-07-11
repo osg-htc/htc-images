@@ -1,0 +1,8 @@
+{
+    "opensciencegrid.name": "Matlab Runtime",
+    "opensciencegrid.description": "This is the Matlab runtime component you can use to execute compiled Matlab codes",
+    "opensciencegrid.url": "https://www.mathworks.com/products/compiler/matlab-runtime.html",
+    "opensciencegrid.category": "Languages",
+    "opensciencegrid.definition_url": "https://github.com/osg-htc/htc-images"
+}
+

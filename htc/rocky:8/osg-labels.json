@@ -1,0 +1,7 @@
+{
+    "opensciencegrid.name": "EL 8",
+    "opensciencegrid.description": "Enterprise Linux (Rocky) 8 base image",
+    "opensciencegrid.url": "https://www.centos.org/",
+    "opensciencegrid.category": "Base",
+    "opensciencegrid.definition_url": "https://github.com/opensciencegrid/osgvo-el8"
+}
