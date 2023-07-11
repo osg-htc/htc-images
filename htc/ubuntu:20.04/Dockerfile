@@ -85,9 +85,6 @@ RUN wget -nv https://github.com/htcondor/osdf-client/releases/download/v6.12.1/s
     apt install ./stashcp-*_amd64.deb && \
     rm -f stashcp-*_amd64.deb
 
-# some extra singularity stuff
-COPY .singularity.d /.singularity.d
-
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
 
