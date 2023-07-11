@@ -98,9 +98,9 @@ jobs:
           password: ${{ secrets.OSG_HARBOR_ROBOT_PASSWORD }}
 
       - name: Build ${{ matrix.image }}
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v4
         with:
-          context: ${{ matrix.image }}
+          context: "{{defaultContext}}:${{ matrix.image }}"
           tags: ${{ matrix.image }}
           push: true
 
