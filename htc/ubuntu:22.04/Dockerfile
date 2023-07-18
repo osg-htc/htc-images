@@ -81,9 +81,11 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
     rm -rf /var/lib/apt/lists/*
 
 # stashcp
-RUN wget -nv https://github.com/htcondor/osdf-client/releases/download/v6.12.1/stashcp-6.12.1-1_amd64.deb && \
-    apt install ./stashcp-*_amd64.deb && \
-    rm -f stashcp-*_amd64.deb
+RUN URL=$(curl -L -s https://api.github.com/repos/htcondor/osdf-client/releases/latest | grep -E "browser_download_url.*/stashcp.*amd64.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
+    echo "Picked stashcp version: $URL ..." && \
+    curl -L -o stashcp.deb $URL && \
+    apt install ./stashcp.deb && \
+    rm -f stashcp.deb
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
