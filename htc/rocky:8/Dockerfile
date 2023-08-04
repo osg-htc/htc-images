@@ -23,7 +23,6 @@ RUN dnf -y groupinstall "Development Tools" \
                         "Scientific Support"
 
 RUN dnf -y install --allowerasing --enablerepo=osg-testing \
-           redhat-lsb \
            bc \
            binutils \
            binutils-devel \
@@ -39,6 +38,7 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            glibc-locale-source \
            graphviz \
            gsl-devel \
+           ImageMagick \
            java-11-openjdk \
            java-11-openjdk-devel \
            jq \
@@ -69,6 +69,7 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            python3-devel \
            python3-numpy \
            python3-scipy \
+           redhat-lsb \
            redhat-lsb-core \
            rsync \
            stashcp \
