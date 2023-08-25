@@ -1,4 +1,4 @@
-FROM opensciencegrid/osgvo-el8
+FROM hub.opensciencegrid.org/htc/rocky:8
 
 LABEL opensciencegrid.name="Matlab Runtime"
 LABEL opensciencegrid.description="This is the Matlab runtime component you can use to execute compiled Matlab codes"
