@@ -1,5 +1,11 @@
 FROM debian:12
 
+LABEL opensciencegrid.name="Debian 12"
+LABEL opensciencegrid.description="Debian 12 base image"
+LABEL opensciencegrid.url="https://debian.org/"
+LABEL opensciencegrid.category="Base"
+LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
+
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
     apt update && apt install -y --no-install-recommends \
         build-essential \
@@ -78,9 +84,6 @@ RUN URL=$(curl -L -s https://api.github.com/repos/htcondor/osdf-client/releases/
     curl -L -o stashcp.deb $URL && \
     apt install ./stashcp.deb && \
     rm -f stashcp.deb
-
-RUN mkdir -p /.singularity.d
-COPY osg-labels.json /.singularity.d/labels.json
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt

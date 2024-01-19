@@ -1,7 +1,7 @@
 FROM nvidia/cuda:11.0.3-cudnn8-devel-rockylinux8
 
-LABEL opensciencegrid.name="Rock 8 / CUDA 11.0.3"
-LABEL opensciencegrid.description="Enterprise Linux (Rocky) 8 / CUDA 11.0.3 image"
+LABEL opensciencegrid.name="Rocky 8 / CUDA 11.0.3"
+LABEL opensciencegrid.description="Rocky Linux 8 / CUDA 11.0.3 image"
 LABEL opensciencegrid.url="https://rockylinux.org/"
 LABEL opensciencegrid.category="Base"
 LABEL opensciencegrid.definition_url="https://github.com/ospool-images"
@@ -86,9 +86,6 @@ RUN dnf clean all
 # make sure we have a way to bind host provided libraries
 # see https://github.com/singularityware/singularity/issues/611
 RUN mkdir -p /host-libs /etc/OpenCL/vendors
-
-RUN mkdir -p /.singularity.d
-COPY osg-labels.json /.singularity.d/labels.json
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
