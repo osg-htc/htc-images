@@ -1,6 +1,6 @@
 {
     "opensciencegrid.name": "Rocky Linux 8 with CUDA 11.0.3",
-    "opensciencegrid.description": "Enterprise Linux (Rocky) 8 base image, with CUDA 11.0.3",
+    "opensciencegrid.description": "Rocky Linux 8 base image, with CUDA 11.0.3",
     "opensciencegrid.url": "https://rockylinux.org/",
     "opensciencegrid.category": "Base",
     "opensciencegrid.definition_url": "https://github.com/osg-htc/htc-images"

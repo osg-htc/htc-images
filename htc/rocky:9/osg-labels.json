@@ -1,6 +1,6 @@
 {
     "opensciencegrid.name": "Rocky Linux 9",
-    "opensciencegrid.description": "Enterprise Linux (Rocky) 9 base image",
+    "opensciencegrid.description": "Rocky Enterprise Linux 9 base image",
     "opensciencegrid.url": "https://rockylinux.org/",
     "opensciencegrid.category": "Base",
     "opensciencegrid.definition_url": "https://github.com/osg-htc/htc-images"
