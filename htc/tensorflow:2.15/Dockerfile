@@ -3,7 +3,7 @@ FROM tensorflow/tensorflow:2.15.0-gpu
 LABEL opensciencegrid.name="Tensorflow 2.15"
 LABEL opensciencegrid.description="Tensorflow image from the Tensorflow project, with OSG additions"
 LABEL opensciencegrid.url="https://www.tensorflow.org/"
-LABEL opensciencegrid.category="Base"
+LABEL opensciencegrid.category="AI"
 LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
 
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \

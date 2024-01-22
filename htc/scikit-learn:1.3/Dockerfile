@@ -3,7 +3,7 @@ FROM hub.opensciencegrid.org/htc/ubuntu:22.04
 LABEL opensciencegrid.name="scikit-learn:1.3.2"
 LABEL opensciencegrid.description="scikit-learn, configured for execution on OSG"
 LABEL opensciencegrid.url="https://scikit-learn.org/"
-LABEL opensciencegrid.category="Base"
+LABEL opensciencegrid.category="AI"
 LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
 
 COPY 90-scikit-learn.sh /.singularity.d/env/90-scikit-learn.sh
