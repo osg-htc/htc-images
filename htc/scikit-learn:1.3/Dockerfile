@@ -27,6 +27,3 @@ RUN URL=$(curl -L -s https://api.github.com/repos/htcondor/osdf-client/releases/
     apt install ./stashcp.deb && \
     rm -f stashcp.deb
 
-# labeling
-RUN mkdir -p /.singularity.d
-COPY osg-labels.json /.singularity.d/labels.json

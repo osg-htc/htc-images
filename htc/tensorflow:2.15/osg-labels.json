@@ -1,7 +1,0 @@
-{
-    "opensciencegrid.name": "TensorFlow",
-    "opensciencegrid.description": "TensorFlow is a free and open-source software library for machine learning and artificial intelligence.",
-    "opensciencegrid.url": "https://www.tensorflow.org/",
-    "opensciencegrid.category": "AI",
-    "opensciencegrid.definition_url": "https://github.com/osg-htc/htc-images"
-}

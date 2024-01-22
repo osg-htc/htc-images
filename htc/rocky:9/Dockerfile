@@ -1,10 +1,10 @@
 FROM rockylinux:9
 
-LABEL opensciencegrid.name="EL 9"
-LABEL opensciencegrid.description="Enterprise Linux (Rocky) 9 base image"
+LABEL opensciencegrid.name="Rocky 9"
+LABEL opensciencegrid.description="Rocky Linux 9 base image"
 LABEL opensciencegrid.url="https://rockylinux.org/"
 LABEL opensciencegrid.category="Base"
-LABEL opensciencegrid.definition_url="https://github.com/opensciencegrid/osgvo-el9"
+LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
 
 # base dnf/yum setup
 RUN dnf -y update && \
@@ -81,9 +81,6 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
 
 # Cleaning caches to reduce size of image
 RUN dnf clean all
-
-RUN mkdir -p /.singularity.d
-COPY osg-labels.json /.singularity.d/labels.json
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
