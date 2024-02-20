@@ -10,3 +10,4 @@ CVMFS:
     /cvmfs/singularity.opensciencegrid.org/htc
 
 Or via OSDF (pointer will soon be added here).
+
