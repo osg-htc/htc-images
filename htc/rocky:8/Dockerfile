@@ -88,9 +88,6 @@ RUN dnf clean all
 # see https://github.com/singularityware/singularity/issues/611
 RUN mkdir -p /host-libs /etc/OpenCL/vendors
 
-RUN mkdir -p /.singularity.d
-COPY osg-labels.json /.singularity.d/labels.json
-
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
 
