@@ -32,7 +32,7 @@ RUN wget -O /tmp/gromacs.tar.gz http://ftp.gromacs.org/pub/gromacs/gromacs-2023.
     cd /tmp/gromacs*/build && \
     cmake .. \
            -DCMAKE_INSTALL_PREFIX=/usr/local/gromacs \
-           -DGMX_SIMD=AVX_256 \
+           -DGMX_SIMD=AVX2_256 \
            -DGMXAPI=ON \
            -DGMX_THREAD_MPI=ON \
            -DGMX_GPU=CUDA \
