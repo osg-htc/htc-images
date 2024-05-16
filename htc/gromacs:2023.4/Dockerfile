@@ -18,12 +18,15 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
-# stashcp
-RUN URL=$(curl -L -s https://api.github.com/repos/htcondor/osdf-client/releases/latest | grep -E "browser_download_url.*/stashcp.*amd64.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
-    echo "Picked stashcp version: $URL ..." && \
-    curl -L -o stashcp.deb $URL && \
-    apt install ./stashcp.deb && \
-    rm -f stashcp.deb
+# pelican
+RUN URL=$(curl -L -s https://api.github.com/repos/PelicanPlatform/pelican/releases/latest | grep -E "browser_download_url.*/pelican_.*amd64.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
+    echo "Picked Pelican version: $URL ..." && \
+    curl -L -o pelican.deb $URL && \
+    URL=$(curl -L -s https://api.github.com/repos/PelicanPlatform/pelican/releases/latest | grep -E "browser_download_url.*/pelican-osdf-compat_.*amd64.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
+    echo "Picked Pelican compat version: $URL ..." && \
+    curl -L -o pelican-osdf-compat.deb $URL && \
+    apt install ./pelican.deb ./pelican-osdf-compat.deb && \
+    rm -f pelican.deb pelican-osdf-compat.deb
 
 RUN wget -O /tmp/gromacs.tar.gz http://ftp.gromacs.org/pub/gromacs/gromacs-2023.4.tar.gz && \
     tar -xvf /tmp/gromacs.tar.gz -C /tmp && \

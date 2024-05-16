@@ -79,6 +79,9 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            wget \
            which
 
+# pelican
+RUN dnf -y upgrade --enablerepo=osg-upcoming stashcp
+
 # Cleaning caches to reduce size of image
 RUN dnf clean all
 

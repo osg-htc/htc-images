@@ -20,10 +20,4 @@ RUN cd /opt && \
     . sklearn-venv/bin/activate && \
     pip3 install -U scikit-learn==1.3.2
 
-# OSDF
-RUN URL=$(curl -L -s https://api.github.com/repos/htcondor/osdf-client/releases/latest | grep -E "browser_download_url.*/stashcp.*amd64.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
-    echo "Picked stashcp version: $URL ..." && \
-    curl -L -o stashcp.deb $URL && \
-    apt install ./stashcp.deb && \
-    rm -f stashcp.deb
 
