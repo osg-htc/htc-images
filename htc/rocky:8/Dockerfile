@@ -4,7 +4,7 @@ LABEL opensciencegrid.name="Rocky 8"
 LABEL opensciencegrid.description="Rocky Linux 8 base image"
 LABEL opensciencegrid.url="https://rockylinux.org/"
 LABEL opensciencegrid.category="Base"
-LABEL opensciencegrid.definition_url="https://github.com/ospool-images"
+LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
 
 # base dnf/yum setup
 RUN dnf -y update && \
