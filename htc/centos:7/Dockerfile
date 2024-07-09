@@ -6,6 +6,10 @@ LABEL opensciencegrid.url="https://www.centos.org/"
 LABEL opensciencegrid.category="Base"
 LABEL opensciencegrid.definition_url="https://github.com/opensciencegrid/osgvo-el7"
 
+# EOL workaround
+RUN sed -i.bak 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
+    sed -i.bak 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* 
+
 RUN yum -y upgrade && \
     yum -y install epel-release yum-plugin-priorities && \
     yum -y install https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el7-release-latest.rpm && \
