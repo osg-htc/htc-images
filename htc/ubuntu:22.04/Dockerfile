@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 LABEL opensciencegrid.name="Ubuntu 22.04"
-LABEL opensciencegrid.description="Ubuntu 22.04 (Focal) base image"
+LABEL opensciencegrid.description="Ubuntu 22.04 (Jammy Jellyfish) base image"
 LABEL opensciencegrid.url="https://www.ubuntu.com"
 LABEL opensciencegrid.category="Base"
 LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
