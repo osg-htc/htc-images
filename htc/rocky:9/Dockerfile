@@ -39,6 +39,7 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            graphviz \
            gsl-devel \
            ImageMagick \
+           iputils \
            java-17-openjdk \
            java-17-openjdk-devel \
            jq \
