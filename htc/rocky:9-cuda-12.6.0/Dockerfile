@@ -78,7 +78,8 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            time \
            tk-devel \
            wget \
-           which
+           which \
+           xxhash-devel
 
 # pelican
 RUN dnf -y upgrade --enablerepo=osg-upcoming stashcp
