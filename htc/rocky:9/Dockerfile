@@ -82,7 +82,8 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            xxhash-devel
 
 # pelican
-RUN dnf -y upgrade --enablerepo=osg-upcoming stashcp
+#RUN dnf -y upgrade --enablerepo=osg-upcoming stashcp
+RUN rpm -Uvh https://github.com/PelicanPlatform/pelican/releases/download/v7.9.9/pelican-7.9.9-1.x86_64.rpm https://github.com/PelicanPlatform/pelican/releases/download/v7.9.9/pelican-osdf-compat-7.9.9-1.x86_64.rpm
 
 # Cleaning caches to reduce size of image
 RUN dnf clean all
