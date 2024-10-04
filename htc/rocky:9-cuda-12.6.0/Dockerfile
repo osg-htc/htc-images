@@ -10,7 +10,8 @@ LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
 RUN dnf -y update && \
     dnf -y install yum-utils && \
     dnf -y config-manager --set-enabled crb && \
-    dnf -y install epel-release
+    dnf -y install epel-release && \
+    dnf -y clean all
 
 # osg repo
 RUN dnf -y install https://repo.opensciencegrid.org/osg/23-main/osg-23-main-el9-release-latest.rpm
@@ -79,7 +80,8 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            tk-devel \
            wget \
            which \
-           xxhash-devel
+           xxhash-devel \
+    && dnf -y clean all
 
 # pelican
 RUN dnf -y upgrade --enablerepo=osg-upcoming stashcp
