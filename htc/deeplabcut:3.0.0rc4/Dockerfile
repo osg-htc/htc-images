@@ -25,7 +25,7 @@ RUN python3 -m pip install --upgrade \
         numpy \
         tensorflow==2.10 \
         tensorpack==0.11 \
-        tensorrt \
+        tensorrt==10.4.0 \
         tf_slim \
         torch==2.4.1 \
     && \
