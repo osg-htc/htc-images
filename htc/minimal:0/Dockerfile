@@ -6,3 +6,6 @@ LABEL opensciencegrid.url="https://osg-htc.org/"
 LABEL opensciencegrid.category="Tools"
 LABEL opensciencegrid.definition_url="https://github.com/osg-htc/htc-images"
 
+# bash is used in some of our testing
+RUN apk update && apk add bash
+
