@@ -91,7 +91,8 @@ jobs:
       - name: Set environment variables
         id: set-env-vars
         run: |
-          if [ "${{ matrix.image }}" == "htc/minimal:0" ]; then
+          if [ "${{ matrix.image }}" == "htc/minimal:0" ] || \
+             [ "${{ matrix.image }}" == "htc/rocky:9" ]; then
               echo "PLATFORMS=linux/amd64,linux/arm64" >> $GITHUB_ENV
           else
               echo "PLATFORMS=linux/amd64" >> $GITHUB_ENV
