@@ -13,7 +13,7 @@ RUN dnf -y update && \
     dnf -y install epel-release
 
 # osg repo
-RUN dnf -y install https://repo.opensciencegrid.org/osg/23-main/osg-23-main-el9-release-latest.rpm
+RUN dnf -y install https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm
    
 # pegasus repo
 RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/wms/download/rhel/9/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo

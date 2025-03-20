@@ -13,7 +13,7 @@ RUN dnf -y update && \
     dnf -y install epel-release
 
 # osg repo
-RUN dnf -y install https://repo.opensciencegrid.org/osg/23-main/osg-23-main-el8-release-latest.rpm
+RUN dnf -y install https://repo.osg-htc.org/osg/24-main/osg-24-main-el8-release-latest.rpm
    
 # pegasus repo - not available yet
 RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=http://download.pegasus.isi.edu/wms/download/rhel/8/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
@@ -82,8 +82,7 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            which
 
 # pelican
-#RUN dnf -y upgrade --enablerepo=osg-upcoming stashcp
-RUN rpm -Uvh https://github.com/PelicanPlatform/pelican/releases/download/v7.9.9/pelican-7.9.9-1.x86_64.rpm https://github.com/PelicanPlatform/pelican/releases/download/v7.9.9/pelican-osdf-compat-7.9.9-1.x86_64.rpm
+RUN dnf -y upgrade --enablerepo=osg-upcoming pelican pelican-osdf-compat
 
 # Cleaning caches to reduce size of image
 RUN dnf clean all
