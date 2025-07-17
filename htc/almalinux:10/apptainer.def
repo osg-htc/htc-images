@@ -65,6 +65,7 @@ From: almalinux:10-kitten
            python3-devel \
            python3-numpy \
            python3-scipy \
+           R \
            rsync \
            subversion \
            tcl-devel \

@@ -71,6 +71,7 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            python3-devel \
            python3-numpy \
            python3-scipy \
+           R \
            rsync \
            stashcp \
            subversion \
