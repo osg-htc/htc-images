@@ -13,10 +13,10 @@ RUN dnf -y update && \
     dnf -y install epel-release
 
 # osg repo
-RUN dnf -y install https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm
+RUN dnf -y install https://repo.osg-htc.org/osg/25-main/osg-25-main-el9-release-latest.rpm
    
-# pegasus repo
-RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/wms/download/rhel/9/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
+# pegasus repo - 5.1.2dev repo
+RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1.2-dev/rhel/9/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
 
 # well rounded basic system to support a wide range of user jobs
 RUN dnf -y groupinstall "Development Tools" \
@@ -66,6 +66,8 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            osg-ca-certs \
            osg-wn-client \
            pegasus \
+           pelican \
+           pelican-osdf-compat \
            python3-devel \
            python3-numpy \
            python3-scipy \
@@ -79,13 +81,12 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            tk-devel \
            wget \
            which \
-           xxhash-devel
+           xxhash-devel \
+    && dnf -y clean all
 
 # pelican
-RUN dnf -y upgrade --enablerepo=osg-upcoming pelican pelican-osdf-compat
-
-# Cleaning caches to reduce size of image
-RUN dnf clean all
+RUN dnf -y upgrade --enablerepo=osg-upcoming pelican pelican-osdf-compat \
+    && dnf -y clean all
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt

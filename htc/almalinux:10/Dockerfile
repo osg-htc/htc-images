@@ -12,7 +12,10 @@ RUN dnf -y update && \
     dnf -y install epel-release
 
 # osg repo
-#RUN dnf -y install https://repo.opensciencegrid.org/osg/23-main/osg-23-main-el9-release-latest.rpm
+RUN dnf -y install https://repo.opensciencegrid.org/osg/25-main/osg-25-main-el10-release-latest.rpm
+
+# pegasus repo 
+RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1.2-dev/rhel/10/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
 
 # well rounded basic system to support a wide range of user jobs
 RUN dnf -y groupinstall "Development Tools" \
@@ -58,6 +61,9 @@ RUN dnf -y install --allowerasing \
            mesa-libGL-devel \
            openssh \
            openssh-server \
+           pegasus \
+           pelican \
+           pelican-osdf-compat \
            python3-devel \
            python3-numpy \
            python3-scipy \
@@ -72,7 +78,7 @@ RUN dnf -y install --allowerasing \
            xxhash-devel
 
 # pelican
-#RUN dnf -y upgrade --enablerepo=osg-upcoming pelican pelican-osdf-compat
+RUN dnf -y upgrade --enablerepo=osg-upcoming pelican pelican-osdf-compat
 
 # Cleaning caches to reduce size of image
 RUN dnf clean all

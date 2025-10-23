@@ -15,8 +15,8 @@ RUN dnf -y update && \
 # osg repo
 RUN dnf -y install https://repo.osg-htc.org/osg/25-main/osg-25-main-el8-release-latest.rpm
    
-# pegasus repo - not available yet
-RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=http://download.pegasus.isi.edu/wms/download/rhel/8/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
+# pegasus repo - 5.1.2dev repo
+RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1.2-dev/rhel/8/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
 
 # well rounded basic system to support a wide range of user jobs
 RUN dnf -y groupinstall "Development Tools" \
@@ -66,6 +66,8 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            osg-ca-certs \
            osg-wn-client \
            pegasus \
+           pelican \
+           pelican-osdf-compat \
            python3-devel \
            python3-numpy \
            python3-scipy \
@@ -79,17 +81,12 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            time \
            tk-devel \
            wget \
-           which
+           which \
+    && dnf -y clean all
 
 # pelican
-RUN dnf -y upgrade --enablerepo=osg-upcoming pelican pelican-osdf-compat
-
-# pegasus - RPM packaging problem in 5.1.1
-RUN rpm -e --noscripts pegasus && \
-    dnf -y install https://download.pegasus.isi.edu/pegasus/5.1.2-dev.0/pegasus-5.1.2-dev.0-1.el8.x86_64.rpm
-
-# Cleaning caches to reduce size of image
-RUN dnf clean all
+RUN dnf -y upgrade --enablerepo=osg-upcoming pelican pelican-osdf-compat \
+    && dnf -y clean all
 
 # make sure we have a way to bind host provided libraries
 # see https://github.com/singularityware/singularity/issues/611
