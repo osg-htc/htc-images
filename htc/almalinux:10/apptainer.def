@@ -19,7 +19,7 @@ From: almalinux:10-kitten
     dnf -y install https://repo.opensciencegrid.org/osg/25-main/osg-25-main-el10-release-latest.rpm
 
     # pegasus repo 
-    echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1.2-dev/rhel/10/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
+    echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1/rhel/10/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
 
     # well rounded basic system to support a wide range of user jobs
     dnf -y groupinstall "Development Tools" \

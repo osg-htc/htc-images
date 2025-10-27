@@ -17,7 +17,7 @@ RUN dnf -y update && \
 RUN dnf -y install https://repo.osg-htc.org/osg/25-main/osg-25-main-el9-release-latest.rpm
    
 # pegasus repo - 5.1.2dev repo
-RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1.2-dev/rhel/9/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
+RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1/rhel/9/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
 
 # well rounded basic system to support a wide range of user jobs
 RUN dnf -y groupinstall "Development Tools" \
