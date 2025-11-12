@@ -93,10 +93,8 @@ jobs:
         run: |
           if [ "${{ matrix.image }}" == "htc/minimal:0" ] || \
              [ "${{ matrix.image }}" == "htc/rocky:9" ]; then
+             [ "${{ matrix.image }}" == "htc/almalinux:10" ]; then
               echo "PLATFORMS=linux/amd64,linux/arm64" >> $GITHUB_ENV
-          elif [ "${{ matrix.image }}" == "htc/almalinux:10" ]; then
-              # make sure we use the v2 microarch for el10
-              echo "PLATFORMS=linux/amd64/v2" >> $GITHUB_ENV
           else
               echo "PLATFORMS=linux/amd64" >> $GITHUB_ENV
           fi

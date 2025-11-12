@@ -1,4 +1,4 @@
-FROM almalinux/10-base:latest
+FROM almalinux:10
 
 LABEL opensciencegrid.name="AlmaLinux 10"
 LABEL opensciencegrid.description="AlmaLinux 10 base image"
