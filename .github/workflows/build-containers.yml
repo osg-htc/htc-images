@@ -92,7 +92,7 @@ jobs:
         id: set-env-vars
         run: |
           if [ "${{ matrix.image }}" == "htc/almalinux:10" ]; then
-              echo "PLATFORMS=linux/amd64/v2,linux/arm64" >> $GITHUB_ENV
+              echo "PLATFORMS=linux/amd64,linux/arm64" >> $GITHUB_ENV
           elif [ "${{ matrix.image }}" == "htc/minimal:0" ] || \
                [ "${{ matrix.image }}" == "htc/rocky:9" ]; then
               echo "PLATFORMS=linux/amd64,linux/arm64" >> $GITHUB_ENV
