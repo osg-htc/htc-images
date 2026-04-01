@@ -19,6 +19,8 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
         gfal2 \
         gfortran \
         git \
+        iputils-tracepath \
+        iputils-ping \
         libafterimage-dev \
         libavahi-compat-libdnssd-dev \
         libcfitsio-dev \
