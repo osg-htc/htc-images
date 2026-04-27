@@ -41,7 +41,7 @@ RUN mv /usr/local/lib/python3.10/dist-packages/deeplabcut/pose_estimation_tensor
 RUN URL=$(curl -L -s https://api.github.com/repos/PelicanPlatform/pelican/releases/latest | grep -E "browser_download_url.*/pelican_.*amd64.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
     echo "Picked Pelican version: $URL ..." && \
     curl -L -o pelican.deb $URL && \
-    URL=$(curl -L -s https://api.github.com/repos/PelicanPlatform/pelican/releases/latest | grep -E "browser_download_url.*/pelican-osdf-compat_.*amd64.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
+    URL=$(curl -L -s https://api.github.com/repos/PelicanPlatform/pelican/releases/latest | grep -E "browser_download_url.*/pelican-osdf-compat_.*all.deb" | head -n 1 |  cut -d : -f 2,3 | tr -d \") && \
     echo "Picked Pelican compat version: $URL ..." && \
     curl -L -o pelican-osdf-compat.deb $URL && \
     apt install ./pelican.deb ./pelican-osdf-compat.deb && \
