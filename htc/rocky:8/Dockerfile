@@ -42,6 +42,7 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            java-11-openjdk \
            java-11-openjdk-devel \
            jq \
+           libcurl \
            libgfortran \
            libGLU \
            libgomp \

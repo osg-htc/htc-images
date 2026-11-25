@@ -43,6 +43,7 @@ RUN dnf -y install --allowerasing --enablerepo=osg-testing \
            java-17-openjdk \
            java-17-openjdk-devel \
            jq \
+           libcurl \
            libgfortran \
            libGLU \
            libgomp \
