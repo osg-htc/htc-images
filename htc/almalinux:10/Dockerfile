@@ -42,6 +42,7 @@ RUN dnf -y install --allowerasing \
            java-21-openjdk \
            java-21-openjdk-devel \
            jq \
+           libcurl \
            libgfortran \
            libGLU \
            libgomp \
