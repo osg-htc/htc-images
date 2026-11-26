@@ -14,7 +14,7 @@ RUN dnf -y update && \
     dnf -y clean all
 
 # osg repo
-RUN dnf -y install https://repo.osg-htc.org/osg/25-main/osg-25-main-el9-release-latest.rpm
+RUN dnf -y install https://repo.osg-htc.org/osg/26-main/osg-26-main-el9-release-latest.rpm
    
 # pegasus repo - 5.1.2dev repo
 RUN echo -e "# Pegasus\n[Pegasus]\nname=Pegasus\nbaseurl=https://download.pegasus.isi.edu/pegasus/development/5.1/rhel/9/\$basearch/\ngpgcheck=0\nenabled=1\npriority=50" >/etc/yum.repos.d/pegasus.repo
